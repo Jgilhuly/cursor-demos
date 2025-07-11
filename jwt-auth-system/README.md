@@ -123,7 +123,3 @@ This project demonstrates:
 - Implementing JWT token-based authentication
 - Creating secure middleware patterns
 - Following security best practices
-
-## License
-
-MIT License - Feel free to use this for educational purposes.
