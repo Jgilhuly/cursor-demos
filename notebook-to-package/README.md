@@ -26,6 +26,15 @@ The `user_behavior_analysis.ipynb` notebook contains a user behavior analysis th
 - **Standardize Naming**: Fix inconsistent naming conventions
 - **Create Package Structure**: Convert to proper Python package with setup.py
 
+### Example Agent Prompt
+```
+We need to convert this notebook to a python package. First, analyze the notebook and identify areas that we can improve the code as we migrate. Create a todo list of items to tackle.
+```
+
+```
+Execute this plan.
+```
+
 ## Getting Started
 
 1. Install dependencies:
