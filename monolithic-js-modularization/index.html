@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Dashboard - Legacy System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Business Dashboard</h1>
+            <p class="subtitle">Customer Management System (Legacy Version)</p>
+        </header>
+
+        <div class="alert" id="errorMessage" style="display: none;"></div>
+
+        <div class="controls">
+            <div class="search-section">
+                <input type="text" id="customerSearch" placeholder="Search customers..." class="search-input">
+            </div>
+            
+            <div class="filter-section">
+                <select id="tierFilter" class="filter-select">
+                    <option value="all">All Tiers</option>
+                    <option value="bronze">Bronze</option>
+                    <option value="silver">Silver</option>
+                    <option value="gold">Gold</option>
+                </select>
+                
+                <button id="exportBtn" class="btn btn-primary">Export CSV</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Live Demo Functions</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h3>Email Validation</h3>
+                    <input type="email" id="emailTest" placeholder="test@example.com" class="demo-input">
+                    <button onclick="testEmailValidation()" class="btn btn-small">Test</button>
+                    <div id="emailResult" class="demo-result"></div>
+                </div>
+
+                <div class="demo-item">
+                    <h3>Phone Formatting</h3>
+                    <input type="tel" id="phoneTest" placeholder="1234567890" class="demo-input">
+                    <button onclick="testPhoneFormatting()" class="btn btn-small">Format</button>
+                    <div id="phoneResult" class="demo-result"></div>
+                </div>
+
+                <div class="demo-item">
+                    <h3>Name Sanitization</h3>
+                    <input type="text" id="nameTest" placeholder="john o'connor" class="demo-input">
+                    <button onclick="testNameSanitization()" class="btn btn-small">Sanitize</button>
+                    <div id="nameResult" class="demo-result"></div>
+                </div>
+
+                <div class="demo-item">
+                    <h3>Currency Formatting</h3>
+                    <input type="number" id="currencyTest" placeholder="1234.56" class="demo-input">
+                    <button onclick="testCurrencyFormatting()" class="btn btn-small">Format</button>
+                    <div id="currencyResult" class="demo-result"></div>
+                </div>
+
+                <div class="demo-item">
+                    <h3>Date Formatting</h3>
+                    <input type="date" id="dateTest" class="demo-input">
+                    <button onclick="testDateFormatting()" class="btn btn-small">Format</button>
+                    <div id="dateResult" class="demo-result"></div>
+                </div>
+
+                <div class="demo-item">
+                    <h3>Credit Card Validation</h3>
+                    <input type="text" id="creditCardTest" placeholder="4111111111111111" class="demo-input">
+                    <button onclick="testCreditCardValidation()" class="btn btn-small">Validate</button>
+                    <div id="creditCardResult" class="demo-result"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h2>Customer Management</h2>
+            <div class="table-container">
+                <table class="customer-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Tier</th>
+                            <th>Total Spent</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        <!-- Dynamic content will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Customer Modal -->
+    <div id="editCustomerModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Edit Customer</h3>
+            <form id="editCustomerForm">
+                <div class="form-group">
+                    <label for="editCustomerName">Name:</label>
+                    <input type="text" id="editCustomerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCustomerEmail">Email:</label>
+                    <input type="email" id="editCustomerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCustomerPhone">Phone:</label>
+                    <input type="tel" id="editCustomerPhone" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" onclick="hideEditModal()" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script>
+        // Demo functions to test the utilities
+        function testEmailValidation() {
+            const email = getElementById('emailTest').value;
+            const isValid = validateEmail(email);
+            const isBusiness = isValidBusinessEmail(email);
+            
+            const result = getElementById('emailResult');
+            result.innerHTML = `
+                <div>Valid: ${isValid ? '✅' : '❌'}</div>
+                <div>Business Email: ${isBusiness ? '✅' : '❌'}</div>
+            `;
+        }
+
+        function testPhoneFormatting() {
+            const phone = getElementById('phoneTest').value;
+            const formatted = formatPhoneNumber(phone);
+            const isValid = validatePhone(phone);
+            
+            const result = getElementById('phoneResult');
+            result.innerHTML = `
+                <div>Formatted: ${formatted}</div>
+                <div>Valid: ${isValid ? '✅' : '❌'}</div>
+            `;
+        }
+
+        function testNameSanitization() {
+            const name = getElementById('nameTest').value;
+            const sanitized = sanitizeAndFormatName(name);
+            
+            const result = getElementById('nameResult');
+            result.innerHTML = `<div>Sanitized: "${sanitized}"</div>`;
+        }
+
+        function testCurrencyFormatting() {
+            const amount = parseFloat(getElementById('currencyTest').value);
+            const formatted = formatCurrency(amount);
+            
+            const result = getElementById('currencyResult');
+            result.innerHTML = `<div>Formatted: ${formatted}</div>`;
+        }
+
+        function testDateFormatting() {
+            const date = getElementById('dateTest').value;
+            const formatted = formatDate(date);
+            const dateTime = formatDateTime(date);
+            const timeAgo = getTimeAgo(date);
+            
+            const result = getElementById('dateResult');
+            result.innerHTML = `
+                <div>Date: ${formatted}</div>
+                <div>DateTime: ${dateTime}</div>
+                <div>Time Ago: ${timeAgo}</div>
+            `;
+        }
+
+        function testCreditCardValidation() {
+            const cardNumber = getElementById('creditCardTest').value;
+            const isValid = isValidCreditCard(cardNumber);
+            
+            const result = getElementById('creditCardResult');
+            result.innerHTML = `<div>Valid: ${isValid ? '✅' : '❌'}</div>`;
+        }
+
+        function hideEditModal() {
+            hideElement('editCustomerModal');
+        }
+
+        // Mock API data since we don't have a real backend
+        function mockApiCall() {
+            // Simulate API delay
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({
+                        customers: [
+                            {
+                                id: 1,
+                                name: "john smith",
+                                email: "JOHN.SMITH@BUSINESSEMAIL.COM",
+                                phone: "5551234567",
+                                isActive: true,
+                                joinDate: "2023-01-15",
+                                orders: [
+                                    { date: "2023-02-01", amount: 150.00 },
+                                    { date: "2023-03-15", amount: 275.50 },
+                                    { date: "2023-04-10", amount: 420.75 }
+                                ]
+                            },
+                            {
+                                id: 2,
+                                name: "mary o'connor",
+                                email: "mary.oconnor@techcorp.com",
+                                phone: "15551234567",
+                                isActive: true,
+                                joinDate: "2022-11-20",
+                                orders: [
+                                    { date: "2022-12-01", amount: 1200.00 },
+                                    { date: "2023-01-15", amount: 800.50 },
+                                    { date: "2023-02-10", amount: 950.25 },
+                                    { date: "2023-03-20", amount: 1100.75 },
+                                    { date: "2023-04-05", amount: 1350.00 },
+                                    { date: "2023-05-12", amount: 2100.50 }
+                                ]
+                            },
+                            {
+                                id: 3,
+                                name: "robert johnson jr.",
+                                email: "rjohnson@startup.io",
+                                phone: "5559876543",
+                                isActive: true,
+                                joinDate: "2023-03-10",
+                                orders: [
+                                    { date: "2023-03-20", amount: 5500.00 },
+                                    { date: "2023-04-01", amount: 3200.75 },
+                                    { date: "2023-04-15", amount: 4100.25 },
+                                    { date: "2023-05-01", amount: 7800.50 }
+                                ]
+                            },
+                            {
+                                id: 4,
+                                name: "sarah wilson",
+                                email: "s.wilson@gmail.com",
+                                phone: "5555432109",
+                                isActive: false,
+                                joinDate: "2023-02-05",
+                                orders: [
+                                    { date: "2023-02-15", amount: 75.00 },
+                                    { date: "2023-03-01", amount: 125.50 }
+                                ]
+                            }
+                        ]
+                    });
+                }, 500);
+            });
+        }
+
+        // Override the makeApiRequest function to use our mock data
+        function makeApiRequest(url, options = {}) {
+            logDebug(`Making API request to: ${url}`);
+            
+            if (url === '/api/customers') {
+                return mockApiCall();
+            }
+            
+            // For other requests, just return empty success
+            return Promise.resolve({ success: true });
+        }
+
+        // Add event listeners for filters
+        getElementById('tierFilter').addEventListener('change', function() {
+            const tier = this.value;
+            loadCustomers().then(customers => {
+                const filtered = filterCustomersByTier(customers, tier);
+                updateCustomerTable(filtered);
+            });
+        });
+
+        getElementById('exportBtn').addEventListener('click', function() {
+            loadCustomers().then(customers => {
+                exportCustomersToCSV(customers);
+            });
+        });
+
+        // Enable debug mode for the demo
+        debugMode = true;
+        
+        // Initialize the dashboard when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            logDebug('Dashboard initializing...');
+            initializeDashboard();
+        });
+    </script>
+</body>
+</html> 

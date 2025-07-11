@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnerable User Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .nav a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+    }
+    .nav a:hover {
+      background-color: #0056b3;
+    }
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+      border: 1px solid #ffeaa7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔓 Vulnerable User Management System</h1>
+      <p>A deliberately insecure application for security testing</p>
+    </div>
+
+    <% if (user) { %>
+      <div class="nav">
+        <p>Welcome, <strong><%= user.username %></strong>!</p>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+      </div>
+    <% } else { %>
+      <div class="nav">
+        <a href="/login">Login</a>
+        <a href="/debug">Debug Info</a>
+      </div>
+    <% } %>
+
+    <div class="warning">
+      <h3>⚠️ Security Warning</h3>
+      <p>This application contains intentional security vulnerabilities for demonstration purposes:</p>
+      <ul>
+        <li>Hard-coded credentials</li>
+        <li>SQL injection vulnerabilities</li>
+        <li>Cross-site scripting (XSS) vulnerabilities</li>
+        <li>Insecure authentication</li>
+        <li>Directory traversal vulnerabilities</li>
+        <li>Information disclosure</li>
+      </ul>
+      <p><strong>DO NOT use this in production!</strong></p>
+    </div>
+
+    <div>
+      <h2>Features</h2>
+      <ul>
+        <li>User authentication (admin/password123)</li>
+        <li>User management dashboard</li>
+        <li>User search functionality</li>
+        <li>File access system</li>
+        <li>Debug information endpoint</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html> 

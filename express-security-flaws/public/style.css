@@ -1,0 +1,48 @@
+/* Additional styles for the vulnerable app */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.vulnerability-demo {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+.security-flaw {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+}
+
+.code-example {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  border: 1px solid #e9ecef;
+}
+
+.warning-banner {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.exploit-box {
+  background-color: #343a40;
+  color: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 10px 0;
+  font-family: 'Courier New', monospace;
+} 

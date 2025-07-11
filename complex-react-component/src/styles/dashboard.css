@@ -1,0 +1,135 @@
+/* Dashboard Styles */
+.dashboard-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.widget-paper {
+  transition: all 0.3s ease;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.widget-paper:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.stats-widget {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.chart-widget {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.table-widget {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.activity-widget {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.performance-warning {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  border: 2px solid #ff6b6b;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+}
+
+.expensive-calculation {
+  background: #ffebee;
+  border-left: 4px solid #f44336;
+  padding: 8px;
+  margin: 8px 0;
+  font-size: 0.75rem;
+  color: #d32f2f;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Table styles */
+.table-container {
+  position: relative;
+}
+
+.table-container::before {
+  content: "⚠️ Performance Issue: Heavy calculations on every render";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: #fff3cd;
+  color: #856404;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  z-index: 1;
+}
+
+/* Chart styles */
+.chart-container {
+  position: relative;
+}
+
+.chart-container::before {
+  content: "⚠️ Performance Issue: Expensive data processing";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  background: #f8d7da;
+  color: #721c24;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  z-index: 1;
+}
+
+/* Activity styles */
+.activity-container {
+  position: relative;
+}
+
+.activity-container::before {
+  content: "⚠️ Performance Issue: No memoization";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #d1ecf1;
+  color: #0c5460;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  z-index: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 16px 8px;
+  }
+  
+  .widget-paper {
+    margin-bottom: 16px;
+  }
+} 
