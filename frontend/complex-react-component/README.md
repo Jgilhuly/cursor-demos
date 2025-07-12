@@ -184,36 +184,6 @@ Before optimizations, you should observe:
 - **Memory usage**: High due to frequent re-renders
 - **CPU usage**: Elevated during interactions
 
-## 🔧 Tech Stack
-
-- **React 18.2.0**: Latest React with concurrent features
-- **Material-UI 5.14.15**: Modern React component library
-- **Recharts 2.8.0**: Chart library for data visualization
-- **Lodash 4.17.21**: Utility library for data manipulation
-
-## 📁 Project Structure
-
-```
-complex-react-component/
-├── src/
-│   ├── components/
-│   │   ├── Dashboard.js          # Main dashboard with performance issues
-│   │   └── widgets/
-│   │       ├── StatsWidget.js    # Statistics with expensive calculations
-│   │       ├── ChartWidget.js    # Chart with heavy data processing
-│   │       ├── TableWidget.js    # Table with inefficient sorting
-│   │       └── ActivityWidget.js # Activity feed with no memoization
-│   ├── data/
-│   │   └── mockData.js           # Mock data generators
-│   ├── styles/
-│   │   └── dashboard.css         # Custom styling
-│   ├── App.js                    # Main application component
-│   └── index.js                  # Application entry point
-├── public/
-│   └── index.html                # HTML template
-└── package.json                  # Dependencies and scripts
-```
-
 ## 🎨 Visual Indicators
 
 The dashboard includes visual indicators of performance issues:
@@ -231,14 +201,3 @@ After demonstrating the performance issues, use Cursor to:
 4. Optimize data processing functions
 5. Improve state management
 6. Add virtualization for large lists
-
-## 📚 Additional Resources
-
-- [React Performance Optimization](https://react.dev/learn/render-and-commit)
-- [React DevTools Profiler](https://react.dev/blog/2018/09/10/introducing-the-react-profiler)
-- [React.memo Documentation](https://react.dev/reference/react/memo)
-- [useMemo Hook](https://react.dev/reference/react/useMemo)
-
----
-
-**Perfect for demonstrating Cursor's ability to identify, explain, and fix complex React performance issues!** 
