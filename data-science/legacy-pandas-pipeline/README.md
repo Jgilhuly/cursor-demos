@@ -40,26 +40,7 @@ The project includes three CSV files with synthetic user analytics data:
 
 ## Setup Instructions
 
-1. **Create virtual environment:**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Generate sample data:**
-   ```bash
-   python generate_data.py
-   ```
-
-4. **Run the notebook:**
-   ```bash
-   jupyter notebook user_analytics_pipeline.ipynb
-   ```
+1. Run the `user_analytics_pipeline.ipynb` notebook.
 
 ## Expected Performance Issues
 
