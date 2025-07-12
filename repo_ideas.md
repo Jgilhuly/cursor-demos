@@ -71,5 +71,3 @@
   *(A single large `.js` file exporting multiple utilities but no module structure.)*
 
 ---
-
-With these 16 stub repos in place, each demo can be run “from scratch” against a dedicated codebase that highlights exactly where Cursor adds value.
