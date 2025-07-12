@@ -16,7 +16,7 @@ This repository contains 9 different demo projects across various domains of sof
 
 ## Demo Projects
 
-### 🌐 Web Development
+### 🌐 Frontend Development
 
 #### **Complex React Component** (`complex-react-component/`)
 A React application with a nested, state-heavy component containing performance bottlenecks.
@@ -27,18 +27,6 @@ A React application with a nested, state-heavy component containing performance 
 A TypeScript project setup for building a complete REST API client from scratch.
 - **Challenge**: Generate a full-featured API client with proper TypeScript types
 - **Technologies**: TypeScript, React, Vite
-
-### 📊 Data Science & ML Engineering
-
-#### **Legacy Pandas Pipeline** (`legacy-pandas-pipeline/`)
-A Jupyter notebook with DataFrame processing using inefficient for-loops.
-- **Challenge**: Optimize data processing performance and modernize the pipeline
-- **Technologies**: Python, Pandas, Jupyter
-
-#### **Notebook to Package** (`notebook-to-package/`)
-A messy Jupyter notebook mixing analysis, plotting, and utility code.
-- **Challenge**: Refactor notebook code into a proper Python package structure
-- **Technologies**: Python, Jupyter, Data Analysis
 
 ### 🚀 Backend Development
 
@@ -70,6 +58,18 @@ A static HTML page using jQuery for DOM manipulation.
 A single large JavaScript file with multiple utilities but no module structure.
 - **Challenge**: Break down monolithic code into proper modules with clean architecture
 - **Technologies**: JavaScript, Module Systems
+
+### 📊 Data Science & ML Engineering
+
+#### **Legacy Pandas Pipeline** (`legacy-pandas-pipeline/`)
+A Jupyter notebook with DataFrame processing using inefficient for-loops.
+- **Challenge**: Optimize data processing performance and modernize the pipeline
+- **Technologies**: Python, Pandas, Jupyter
+
+#### **Notebook to Package** (`notebook-to-package/`)
+A messy Jupyter notebook mixing analysis, plotting, and utility code.
+- **Challenge**: Refactor notebook code into a proper Python package structure
+- **Technologies**: Python, Jupyter, Data Analysis
 
 ## Getting Started
 
