@@ -4,7 +4,15 @@ A collection of demo projects designed to showcase AI-powered development capabi
 
 ## Overview
 
-This repository contains 16 different demo projects across various domains of software development. Each demo is designed as a starting point with intentional gaps, inefficiencies, or security issues that need to be addressed - perfect for demonstrating AI-assisted development workflows.
+This repository contains 9 different demo projects across various domains of software development. Each demo is designed as a starting point with intentional gaps, inefficiencies, or security issues that need to be addressed - perfect for demonstrating AI-assisted development workflows.
+
+## Demo Categories
+
+- **🌐 Web Development**: Frontend frameworks, component optimization, API integration
+- **📊 Data Science**: Pipeline optimization, notebook refactoring, data processing
+- **🚀 Backend Development**: API development, database integration, server optimization
+- **🔐 Security Engineering**: Authentication, authorization, vulnerability remediation
+- **🔧 Legacy Modernization**: Code migration, modularization, architectural improvements
 
 ## Demo Projects
 
@@ -72,46 +80,6 @@ Each demo project includes its own README with specific setup instructions. Gene
 3. **Read the project's README** for specific setup instructions
 4. **Install dependencies** (usually `npm install` or `pip install -r requirements.txt`)
 5. **Start the development server** or run the application
-
-### Example: Running the JWT Auth System Demo
-
-```bash
-cd jwt-auth-system
-npm install
-npm start
-```
-
-## Project Structure
-
-```
-demo-repo/
-├── complex-react-component/     # React performance optimization
-├── crud-endpoint-stub/          # FastAPI CRUD implementation
-├── express-security-flaws/      # Security vulnerability fixes
-├── jquery-to-react-widget/      # jQuery to React migration
-├── jwt-auth-system/            # JWT authentication implementation
-├── legacy-pandas-pipeline/     # Data pipeline optimization
-├── monolithic-js-modularization/ # Code modularization
-├── notebook-to-package/        # Jupyter to package conversion
-├── rest-api-client-stub/       # TypeScript API client generation
-└── README.md                   # This file
-```
-
-## Demo Categories
-
-- **🌐 Web Development**: Frontend frameworks, component optimization, API integration
-- **📊 Data Science**: Pipeline optimization, notebook refactoring, data processing
-- **🚀 Backend Development**: API development, database integration, server optimization
-- **🔐 Security Engineering**: Authentication, authorization, vulnerability remediation
-- **🔧 Legacy Modernization**: Code migration, modularization, architectural improvements
-
-## Contributing
-
-Each demo project is designed to be a learning tool. Feel free to:
-- Add new demo scenarios
-- Improve existing demos
-- Add more detailed documentation
-- Create additional test cases
 
 ## License
 
