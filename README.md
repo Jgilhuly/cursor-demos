@@ -80,7 +80,3 @@ Each demo project includes its own README with specific setup instructions. Gene
 3. **Read the project's README** for specific setup instructions
 4. **Install dependencies** (usually `npm install` or `pip install -r requirements.txt`)
 5. **Start the development server** or run the application
-
-## License
-
-This repository is intended for educational and demonstration purposes.
