@@ -51,17 +51,7 @@ export interface Photo {
   thumbnailUrl: string;
 }
 
-export interface ApiError {
-  message: string;
-  status: number;
-  timestamp: Date;
-}
 
-export interface ApiResponse<T> {
-  data: T;
-  error?: ApiError;
-  cached?: boolean;
-}
 
 export type CreatePostData = Omit<Post, 'id'>;
 export type UpdatePostData = Partial<Post>; 

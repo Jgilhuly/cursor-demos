@@ -20,12 +20,8 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-      const response = await client.getPosts();
-      if (response.error) {
-        setError(response.error.message);
-      } else {
-        setPosts(response.data);
-      }
+      const posts = await client.getPosts();
+      setPosts(posts);
     } catch {
       setError('Failed to load posts');
     } finally {
@@ -37,12 +33,8 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-      const response = await client.getUsers();
-      if (response.error) {
-        setError(response.error.message);
-      } else {
-        setUsers(response.data);
-      }
+      const users = await client.getUsers();
+      setUsers(users);
     } catch {
       setError('Failed to load users');
     } finally {
@@ -54,13 +46,9 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-      const response = await client.createPost(postData);
-      if (response.error) {
-        setError(response.error.message);
-      } else {
-        await loadPosts();
-        setActiveTab('posts');
-      }
+      await client.createPost(postData);
+      await loadPosts();
+      setActiveTab('posts');
     } catch {
       setError('Failed to create post');
     } finally {
@@ -72,12 +60,8 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-      const response = await client.deletePost(id);
-      if (response.error) {
-        setError(response.error.message);
-      } else {
-        await loadPosts();
-      }
+      await client.deletePost(id);
+      await loadPosts();
     } catch {
       setError('Failed to delete post');
     } finally {
@@ -85,8 +69,7 @@ function App() {
     }
   };
 
-  const clearCache = () => {
-    client.clearCache();
+  const clearData = () => {
     setPosts([]);
     setUsers([]);
   };
@@ -126,8 +109,8 @@ function App() {
         >
           Create Post
         </button>
-        <button onClick={clearCache} className="clear-cache">
-          Clear Cache
+        <button onClick={clearData} className="clear-data">
+          Clear Data
         </button>
       </nav>
 
@@ -169,7 +152,7 @@ function App() {
           />
         )}
 
-        <ApiStats client={client} />
+        <ApiStats />
       </main>
     </div>
   );
