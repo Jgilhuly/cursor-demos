@@ -50,7 +50,7 @@ This stub is designed for demonstrating AI-powered development. Some ideas:
 
 ## TODOs for AI Enhancement
 
-The codebase includes several TODOs that are perfect for AI-assisted development:
+The codebase includes several TODOs that are great for AI-assisted development:
 
 - Add validation logic for product creation
 - Implement proper error handling

@@ -6,7 +6,7 @@ This project demonstrates converting a messy Jupyter notebook into a well-struct
 
 The `user_behavior_analysis.ipynb` notebook contains a user behavior analysis that showcases common issues found in real-world data science projects:
 
-### Problems to Fix (Perfect for Cursor AI Demo!)
+### Possible Problems to Fix
 
 1. **Hardcoded File Paths**: The notebook uses absolute paths that won't work on other machines
 2. **Mixed Concerns**: Analysis, plotting, and utility functions are all mixed together in cells
@@ -37,17 +37,9 @@ Execute this plan.
 
 ## Getting Started
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Run the `user_behavior_analysis.ipynb` notebook directly.
 
-2. Run the notebook:
-   ```bash
-   jupyter notebook user_behavior_analysis.ipynb
-   ```
-
-3. Use Cursor AI to refactor the messy code into a clean package structure!
+1. Use Cursor AI to refactor the messy code into a clean package structure!
 
 ## Expected Package Structure After Refactoring
 
@@ -69,13 +61,3 @@ user_behavior_analysis/
 │   └── helpers.py
 └── main.py
 ```
-
-## Sample Data
-
-The `user_behavior_data.csv` file contains sample user behavior data with:
-- User sessions and page views
-- Device types and referrer sources
-- Time spent and conversion data
-- Geographic information
-
-Perfect for demonstrating Cursor's ability to understand context and refactor complex analytical code! 
