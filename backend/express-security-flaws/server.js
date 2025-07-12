@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Hard-coded admin credentials (Security Flaw #1)
+// Admin credentials
 const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = 'password123';
 const API_KEY = 'sk-1234567890abcdef';
@@ -19,12 +19,12 @@ let users = [
   { id: 3, username: 'admin', email: 'admin@company.com', role: 'admin', password: 'password123' }
 ];
 
-// Vulnerable session configuration (Security Flaw #2)
+// Session configuration
 app.use(session({
-  secret: 'weak-secret-key', // Hard-coded weak secret
+  secret: 'weak-secret-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // No HTTPS enforcement
+  cookie: { secure: false }
 }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,9 +36,8 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// Vulnerable authentication middleware (Security Flaw #3)
+// Authentication middleware
 function requireAuth(req, res, next) {
-  // Easily bypassable authentication check
   if (req.session.user || req.headers['x-admin-key'] === API_KEY) {
     next();
   } else {
@@ -55,19 +54,14 @@ app.get('/login', (req, res) => {
   res.render('login', { error: null });
 });
 
-// Vulnerable login endpoint (Security Flaw #4)
+// Login endpoint
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   
-  // No input sanitization, vulnerable to injection
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
     req.session.user = { username: username, role: 'admin' };
     res.redirect('/dashboard');
   } else {
-    // Check against user database with vulnerable query simulation
-    const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
-    console.log('Executing vulnerable query:', query); // This simulates SQL injection
-    
     const user = users.find(u => u.username === username && u.password === password);
     if (user) {
       req.session.user = { username: user.username, role: user.role };
@@ -82,7 +76,7 @@ app.get('/dashboard', requireAuth, (req, res) => {
   res.render('dashboard', { user: req.session.user, users: users });
 });
 
-// Vulnerable user search (Security Flaw #5 - SQL Injection)
+// User search
 app.get('/users/search', (req, res) => {
   const { q } = req.query;
   
@@ -90,13 +84,7 @@ app.get('/users/search', (req, res) => {
     return res.json([]);
   }
   
-  // Simulate SQL injection vulnerability
-  const vulnerableQuery = `SELECT * FROM users WHERE username LIKE '%${q}%' OR email LIKE '%${q}%'`;
-  console.log('Vulnerable search query:', vulnerableQuery);
-  
-  // This simulates what would happen with real SQL injection
   if (q.includes("' OR '1'='1")) {
-    console.log('SQL INJECTION DETECTED! Returning all users...');
     return res.json(users);
   }
   
@@ -108,15 +96,14 @@ app.get('/users/search', (req, res) => {
   res.json(filteredUsers);
 });
 
-// Vulnerable user creation (Security Flaw #6 - XSS)
+// User creation
 app.post('/users', (req, res) => {
   const { username, email, role } = req.body;
   
-  // No input sanitization - vulnerable to XSS
   const newUser = {
     id: users.length + 1,
-    username: username, // Could contain <script> tags
-    email: email, // Could contain malicious HTML
+    username: username,
+    email: email,
     role: role || 'user',
     password: 'defaultpass123'
   };
@@ -125,15 +112,13 @@ app.post('/users', (req, res) => {
   res.redirect('/dashboard');
 });
 
-// Vulnerable user update (Security Flaw #7)
+// User update
 app.put('/users/:id', (req, res) => {
   const { id } = req.params;
   const { username, email, role } = req.body;
   
   const userIndex = users.findIndex(u => u.id == id);
   if (userIndex !== -1) {
-    // No authorization check - any user can update any user
-    // No input sanitization
     users[userIndex] = {
       ...users[userIndex],
       username: username || users[userIndex].username,
@@ -146,16 +131,15 @@ app.put('/users/:id', (req, res) => {
   }
 });
 
-// Vulnerable file access (Security Flaw #8 - Directory Traversal)
+// File access
 app.get('/files/:filename', (req, res) => {
   const { filename } = req.params;
   
-  // Directory traversal vulnerability
   const filePath = path.join(__dirname, 'public', filename);
   res.sendFile(filePath);
 });
 
-// Debug endpoint that exposes sensitive information (Security Flaw #9)
+// Debug endpoint
 app.get('/debug', (req, res) => {
   res.json({
     environment: process.env,
@@ -173,5 +157,4 @@ app.get('/logout', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log('WARNING: This application contains intentional security vulnerabilities for demonstration purposes.');
 }); 

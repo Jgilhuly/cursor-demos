@@ -1,7 +1,5 @@
 # Express Security Flaws Demo
 
-⚠️ **WARNING: This application contains intentional security vulnerabilities for educational purposes only. DO NOT use this in production!**
-
 ## Overview
 
 This is a deliberately vulnerable Express.js application designed to demonstrate common web application security flaws. It simulates a user management system with multiple security vulnerabilities that developers commonly encounter in real-world applications.
@@ -187,5 +185,3 @@ To fix these vulnerabilities, you would:
 This project is for educational purposes only. Use at your own risk.
 
 ---
-
-**Remember: This application is intentionally vulnerable. Never deploy it to production or any publicly accessible environment!** 

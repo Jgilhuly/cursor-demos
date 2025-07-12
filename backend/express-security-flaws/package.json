@@ -1,7 +1,7 @@
 {
-  "name": "express-security-flaws",
+  "name": "express-user-management",
   "version": "1.0.0",
-  "description": "A deliberately vulnerable Express.js application for security demonstration",
+  "description": "A user management Express.js application",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "keywords": ["express", "security", "vulnerable", "demo"],
+  "keywords": ["express", "user-management", "webapp", "demo"],
   "author": "Demo",
   "license": "MIT"
 } 

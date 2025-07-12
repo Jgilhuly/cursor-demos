@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vulnerable User Management System</title>
+  <title>User Management System</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -50,8 +50,8 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>🔓 Vulnerable User Management System</h1>
-      <p>A deliberately insecure application for security testing</p>
+      <h1>🔐 User Management System</h1>
+      <p>A user management application</p>
     </div>
 
     <% if (user) { %>
@@ -67,24 +67,12 @@
       </div>
     <% } %>
 
-    <div class="warning">
-      <h3>⚠️ Security Warning</h3>
-      <p>This application contains intentional security vulnerabilities for demonstration purposes:</p>
-      <ul>
-        <li>Hard-coded credentials</li>
-        <li>SQL injection vulnerabilities</li>
-        <li>Cross-site scripting (XSS) vulnerabilities</li>
-        <li>Insecure authentication</li>
-        <li>Directory traversal vulnerabilities</li>
-        <li>Information disclosure</li>
-      </ul>
-      <p><strong>DO NOT use this in production!</strong></p>
-    </div>
+
 
     <div>
       <h2>Features</h2>
       <ul>
-        <li>User authentication (admin/password123)</li>
+        <li>User authentication</li>
         <li>User management dashboard</li>
         <li>User search functionality</li>
         <li>File access system</li>

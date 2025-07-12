@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Vulnerable User Management System</title>
+  <title>Dashboard - User Management System</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -118,7 +118,7 @@
   <div class="container">
     <div class="header">
       <div>
-        <h1>🔓 User Management Dashboard</h1>
+        <h1>🔐 User Management Dashboard</h1>
         <p>Welcome, <strong><%- user.username %></strong> (<%- user.role %>)</p>
       </div>
       <div class="nav-links">
@@ -130,10 +130,6 @@
 
     <div class="search-section">
       <h3>Search Users</h3>
-      <div class="vulnerability-note">
-        <strong>XSS Test:</strong> Try searching for: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code><br>
-        <strong>SQL Injection Test:</strong> Try: <code>' OR '1'='1</code>
-      </div>
       <input type="text" id="searchInput" class="search-input" placeholder="Search users...">
       <button onclick="searchUsers()" class="btn">Search</button>
       <button onclick="clearSearch()" class="btn btn-danger">Clear</button>
@@ -160,9 +156,6 @@
         </div>
         <button type="submit" class="btn">Add User</button>
       </form>
-      <div class="vulnerability-note">
-        <strong>XSS Test:</strong> Try adding a user with username: <code>&lt;img src=x onerror=alert('XSS')&gt;</code>
-      </div>
     </div>
 
     <div>
