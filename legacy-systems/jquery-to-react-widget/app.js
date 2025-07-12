@@ -1,4 +1,3 @@
-// Global variables - anti-pattern #1
 var tasks = [];
 var filteredTasks = [];
 var currentFilter = 'all';
@@ -16,19 +15,16 @@ var $taskList;
 var $newTaskInput;
 var $searchInput;
 
-// Anti-pattern: Document ready with everything in it
 $(document).ready(function() {
     // Initialize
     init();
     
-    // Bind all events in one place - anti-pattern #2
     bindEvents();
     
     // Load initial data
     loadTasks();
 });
 
-// Anti-pattern: No encapsulation, everything global
 function init() {
     // Cache some elements but not others - inconsistent
     $taskList = $('#task-list');
@@ -41,7 +37,6 @@ function init() {
     searchTerm = '';
 }
 
-// Anti-pattern: Mixed event binding approaches
 function bindEvents() {
     // Some events bound here
     $('#add-task-btn').click(function() {
@@ -117,14 +112,12 @@ function bindEvents() {
     });
 }
 
-// Anti-pattern: Mock API with inconsistent async patterns
 function loadTasks() {
     isLoading = true;
     $('#loading').show();
     
     // Simulate API call with callback hell
     setTimeout(function() {
-        // Nested callbacks - anti-pattern #3
         setTimeout(function() {
             // Some tasks have promises, others callbacks
             if (Math.random() > 0.5) {
@@ -158,7 +151,6 @@ function loadTasks() {
     }, 200);
 }
 
-// Anti-pattern: Inconsistent callback style
 function loadTasksCallback(callback) {
     setTimeout(function() {
         var data = [
@@ -172,7 +164,6 @@ function loadTasksCallback(callback) {
     }, 100);
 }
 
-// Anti-pattern: Heavy DOM manipulation, no abstraction
 function renderTasks() {
     // Always query DOM instead of using cached elements
     $('#task-list').empty();
@@ -180,7 +171,6 @@ function renderTasks() {
     // Filter tasks every time we render - inefficient
     filteredTasks = [];
     
-    // Nested loops - anti-pattern #4
     for (var i = 0; i < tasks.length; i++) {
         var task = tasks[i];
         var shouldShow = true;
@@ -208,7 +198,6 @@ function renderTasks() {
     if (filteredTasks.length === 0) {
         $('#task-list').append('<div class="empty-state"><p>No tasks found. Add a task to get started!</p></div>');
     } else {
-        // Build HTML string - anti-pattern #5
         for (var j = 0; j < filteredTasks.length; j++) {
             var task = filteredTasks[j];
             var html = buildTaskHTML(task);
@@ -220,7 +209,6 @@ function renderTasks() {
     updateStats();
 }
 
-// Anti-pattern: String concatenation for HTML
 function buildTaskHTML(task) {
     var checkedAttr = task.completed ? 'checked' : '';
     var completedClass = task.completed ? 'completed' : '';
@@ -245,13 +233,11 @@ function buildTaskHTML(task) {
     return html;
 }
 
-// Anti-pattern: Utility functions mixed with business logic
 function formatDate(date) {
     // Poor date formatting
     return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
 }
 
-// Anti-pattern: No validation, direct DOM access
 function addTask() {
     var text = $('#new-task-input').val();
     var category = $('#task-category').val();
@@ -288,7 +274,6 @@ function addTask() {
     }, 100);
 }
 
-// Anti-pattern: Direct array manipulation, no abstraction
 function toggleTask(id) {
     // Linear search every time
     for (var i = 0; i < tasks.length; i++) {
@@ -307,7 +292,6 @@ function toggleTask(id) {
     });
 }
 
-// Anti-pattern: Inconsistent parameter passing
 function saveTaskToServer(taskId, callback) {
     setTimeout(function() {
         if (callback) {
@@ -316,7 +300,6 @@ function saveTaskToServer(taskId, callback) {
     }, 50);
 }
 
-// Anti-pattern: More direct DOM manipulation
 function updateStats() {
     var total = tasks.length;
     var completed = 0;
@@ -337,7 +320,6 @@ function updateStats() {
     $('#active-tasks').text(active);
 }
 
-// Anti-pattern: Repetitive code
 function markAllComplete() {
     for (var i = 0; i < tasks.length; i++) {
         tasks[i].completed = true;
@@ -363,12 +345,10 @@ function deleteAllTasks() {
     }
 }
 
-// Anti-pattern: No abstraction for filtering
 function filterTasks() {
     renderTasks(); // Just re-render everything
 }
 
-// Anti-pattern: Modal handling with direct DOM manipulation
 function openEditModal() {
     // Find task by ID
     var task = null;
@@ -419,7 +399,6 @@ function saveEdit() {
     renderTasks();
 }
 
-// Anti-pattern: Direct deletion
 function deleteTask(id) {
     if (confirm('Are you sure you want to delete this task?')) {
         var newTasks = [];
@@ -433,7 +412,6 @@ function deleteTask(id) {
     }
 }
 
-// Anti-pattern: Random utility functions at the end
 function findTaskById(id) {
     for (var i = 0; i < tasks.length; i++) {
         if (tasks[i].id == id) {
@@ -443,13 +421,11 @@ function findTaskById(id) {
     return null;
 }
 
-// Anti-pattern: Inconsistent error handling
 function handleError(error) {
     console.error('Error:', error);
     alert('Something went wrong!');
 }
 
-// Anti-pattern: Global click handlers
 $(document).click(function(e) {
     // Close modal if clicked outside
     if ($(e.target).closest('.modal-content').length === 0 && $(e.target).closest('.edit-btn').length === 0) {
@@ -459,7 +435,6 @@ $(document).click(function(e) {
     }
 });
 
-// Anti-pattern: Window resize handler doing unnecessary work
 $(window).resize(function() {
     // Unnecessary re-render on resize
     if (hasLoaded) {
@@ -469,7 +444,6 @@ $(window).resize(function() {
     }
 });
 
-// Anti-pattern: Polluting global namespace with more functions
 window.debugTasks = function() {
     console.log('Current tasks:', tasks);
     console.log('Filtered tasks:', filteredTasks);
@@ -478,7 +452,6 @@ window.debugTasks = function() {
     console.log('Search term:', searchTerm);
 };
 
-// Anti-pattern: Immediate function execution in global scope
 (function() {
     // Some initialization code that could be anywhere
     var startTime = new Date();
