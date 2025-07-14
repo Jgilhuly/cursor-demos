@@ -137,6 +137,67 @@ body {
   font-weight: 600;
 }
 
+.geo-graph {
+  width: 100%;
+}
+
+.map-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.us-map {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.us-map path {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.us-map path:hover {
+  opacity: 0.8;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.sales-summary {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.region-summary {
+  margin: 5px 0;
+  padding: 5px;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
   .dashboard {
     padding: 10px;

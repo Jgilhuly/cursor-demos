@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import GeoGraph from './components/GeoGraph';
 
 const App = () => {
   const [dashboardData, setDashboardData] = useState({
@@ -103,6 +104,10 @@ const App = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="card">
+          <GeoGraph />
         </div>
       </div>
     </div>

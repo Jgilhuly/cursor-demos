@@ -51,6 +51,21 @@ app.get('/api/sales-over-time', (req, res) => {
   });
 });
 
+app.get('/api/sales-by-region', (req, res) => {
+  db.all(`
+    SELECT state, SUM(sales) as total_sales, SUM(revenue) as total_revenue
+    FROM sales_over_time 
+    GROUP BY state 
+    ORDER BY total_sales DESC
+  `, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(rows);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 }); 
