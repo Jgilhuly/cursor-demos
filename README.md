@@ -4,19 +4,24 @@ A collection of demo projects designed to showcase AI-powered development capabi
 
 ## Overview
 
-This repository contains 9 different demo projects across various domains of software development. Each demo is designed as a starting point with intentional gaps, inefficiencies, or security issues that need to be addressed - perfect for demonstrating AI-assisted development workflows.
+This repository contains 11 different demo projects across various domains of software development. Each demo is designed as a starting point with intentional gaps, inefficiencies, or security issues that need to be addressed - perfect for demonstrating AI-assisted development workflows.
 
 ## Demo Categories
 
-- **🌐 Web Development**: Frontend frameworks, component optimization, API integration
-- **📊 Data Science**: Pipeline optimization, notebook refactoring, data processing
+- **🌐 Frontend Development**: Frontend frameworks, component optimization, API integration
 - **🚀 Backend Development**: API development, database integration, server optimization
-- **🔐 Security Engineering**: Authentication, authorization, vulnerability remediation
-- **🔧 Legacy Modernization**: Code migration, modularization, architectural improvements
+- **🔐 Security**: Authentication, authorization, vulnerability remediation
+- **🔧 Legacy Modernization**: Code migration, modularization, architectural improvements, security improvements
+- **📊 Data Science**: Pipeline optimization, notebook refactoring, data processing
 
 ## Demo Projects
 
 ### 🌐 Frontend Development
+
+#### **Simple React App** (`simple-react-app/`)
+A simple React application with a dashboard and a list of products.
+- **Challenge**: Add a new feature to the application
+- **Technologies**: React, JavaScript, CSS
 
 #### **Complex React Component** (`complex-react-component/`)
 A React application with a nested, state-heavy component containing performance bottlenecks.
@@ -40,7 +45,7 @@ An Express application with intentional security vulnerabilities.
 - **Challenge**: Identify and fix security issues, implement proper authentication
 - **Technologies**: Node.js, Express, Security
 
-### 🔐 Security Engineering
+### 🔐 Security
 
 #### **JWT Authentication System** (`jwt-auth-system/`)
 An Express server with endpoints that lack proper authentication and authorization.
@@ -58,6 +63,11 @@ A static HTML page using jQuery for DOM manipulation.
 A single large JavaScript file with multiple utilities but no module structure.
 - **Challenge**: Break down monolithic code into proper modules with clean architecture
 - **Technologies**: JavaScript, Module Systems
+
+#### **.NET Modernization** (`dotnet-modernization/`)
+A legacy ASP.NET Core MVC application with various architectural and security issues.
+- **Challenge**: Modernize the application to a more maintainable and secure architecture
+- **Technologies**: .NET Core, ASP.NET Core, MVC, ADO.NET, SQL Server
 
 ### 📊 Data Science & ML Engineering
 

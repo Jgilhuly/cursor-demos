@@ -1,0 +1,76 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+venv/
+pip-log.txt
+
+# VSCode
+.vscode/
+.history/
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test & coverage
+coverage/
+*.cover
+*.py,cover
+.hypothesis/
+.tox/
+.nox/
+.cache/
+*.mocha_snapshots
+
+# Misc
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env.*
+.envrc
+
+# Others
+*.sqlite3
+*.db
