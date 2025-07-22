@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffebee;
 }
 
 .dashboard {
@@ -20,7 +20,7 @@ body {
 }
 
 .dashboard-header h1 {
-  color: #333;
+  color: #c62828;
   font-size: 2.5rem;
   font-weight: 300;
 }
@@ -34,19 +34,22 @@ body {
 }
 
 .card {
-  background: white;
+  background: #ffcdd2;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
   transition: transform 0.2s ease;
+  border: 2px solid #ef5350;
 }
 
 .card:hover {
   transform: translateY(-2px);
+  background: #ffb3ba;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
 }
 
 .card h2 {
-  color: #333;
+  color: #b71c1c;
   margin-bottom: 15px;
   font-size: 1.3rem;
   font-weight: 500;
@@ -65,13 +68,13 @@ body {
 .metric-value {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #007bff;
+  color: #d32f2f;
   margin-bottom: 5px;
 }
 
 .metric-label {
   font-size: 0.9rem;
-  color: #666;
+  color: #8e0000;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -87,7 +90,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f8bbd9;
 }
 
 .activity-item:last-child {
@@ -96,16 +99,16 @@ body {
 
 .activity-user {
   font-weight: 500;
-  color: #333;
+  color: #c62828;
 }
 
 .activity-action {
-  color: #666;
+  color: #ad1457;
   font-size: 0.9rem;
 }
 
 .activity-time {
-  color: #999;
+  color: #880e4f;
   font-size: 0.8rem;
 }
 
@@ -120,7 +123,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f8bbd9;
 }
 
 .product-item:last-child {
@@ -129,12 +132,35 @@ body {
 
 .product-name {
   font-weight: 500;
-  color: #333;
+  color: #c62828;
 }
 
 .product-sales {
-  color: #28a745;
+  color: #b71c1c;
   font-weight: 600;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #d32f2f;
+  background-color: #ffebee;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #b71c1c;
+  background-color: #ffcdd2;
+  border: 2px solid #f44336;
+  margin: 20px;
+  border-radius: 8px;
 }
 
 @media (max-width: 768px) {
