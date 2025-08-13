@@ -1,0 +1,32 @@
+services:
+  dev-environment:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/workspace
+    environment:
+      - WANDB_API_KEY=${WANDB_API_KEY:-}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=moviedb
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo123
+    depends_on:
+      - postgres
+    command: sleep infinity
+    working_dir: /workspace
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=moviedb
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo123
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./sample_data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: 

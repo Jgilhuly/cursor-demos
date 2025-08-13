@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: "Source tables from the Jaffle Shop database"
+    database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    schema: jaffle_shop
+    tables:
+      - name: orders
+        description: "Raw orders data from the Jaffle Shop"
+        columns:
+          - name: id
+            description: "Unique identifier for each order"
+            tests:
+              - unique
+              - not_null
+          - name: user_id
+            description: "Foreign key to users/customers table"
+            tests:
+              - not_null
+          - name: order_date
+            description: "Date when the order was placed"
+            tests:
+              - not_null
+          - name: status
+            description: "Current status of the order" 

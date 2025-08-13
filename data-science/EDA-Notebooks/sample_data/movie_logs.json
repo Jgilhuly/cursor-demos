@@ -1,0 +1,127 @@
+[
+  {
+    "timestamp": "2024-01-15T14:30:22Z",
+    "user_id": "u_001",
+    "session_id": "sess_abc123",
+    "event_type": "movie_view",
+    "movie": {
+      "id": "m_1001",
+      "title": "The Matrix",
+      "genre": ["Action", "Sci-Fi"],
+      "year": 1999,
+      "rating": 8.7,
+      "duration_minutes": 136
+    },
+    "user_interaction": {
+      "watch_duration_seconds": 8160,
+      "completion_percentage": 100,
+      "liked": true,
+      "rating_given": 9,
+      "rewatched": false
+    },
+    "device": {
+      "type": "smart_tv",
+      "platform": "roku",
+      "screen_size": "55_inch"
+    }
+  },
+  {
+    "timestamp": "2024-01-15T16:45:10Z",
+    "user_id": "u_002",
+    "session_id": "sess_def456",
+    "event_type": "movie_search",
+    "search_query": "comedy movies 2023",
+    "results_returned": 25,
+    "clicked_result": {
+      "id": "m_2001",
+      "title": "Barbie",
+      "genre": ["Comedy", "Adventure"],
+      "year": 2023,
+      "rating": 7.2
+    },
+    "device": {
+      "type": "mobile",
+      "platform": "ios",
+      "screen_size": "6_inch"
+    }
+  },
+  {
+    "timestamp": "2024-01-15T19:22:33Z",
+    "user_id": "u_003",
+    "session_id": "sess_ghi789",
+    "event_type": "movie_view",
+    "movie": {
+      "id": "m_3001",
+      "title": "Inception",
+      "genre": ["Action", "Drama", "Sci-Fi"],
+      "year": 2010,
+      "rating": 8.8,
+      "duration_minutes": 148
+    },
+    "user_interaction": {
+      "watch_duration_seconds": 2400,
+      "completion_percentage": 27,
+      "liked": false,
+      "rating_given": null,
+      "rewatched": false,
+      "paused_at": "00:40:00"
+    },
+    "device": {
+      "type": "laptop",
+      "platform": "chrome",
+      "screen_size": "13_inch"
+    }
+  },
+  {
+    "timestamp": "2024-01-16T10:15:45Z",
+    "user_id": "u_001",
+    "session_id": "sess_jkl012",
+    "event_type": "recommendation_click",
+    "recommended_movie": {
+      "id": "m_4001",
+      "title": "Blade Runner 2049",
+      "genre": ["Action", "Drama", "Sci-Fi"],
+      "year": 2017,
+      "rating": 8.0,
+      "recommendation_score": 0.94
+    },
+    "recommendation_context": {
+      "algorithm": "collaborative_filtering",
+      "based_on": ["m_1001", "m_3001"],
+      "user_genre_preferences": ["Sci-Fi", "Action"]
+    },
+    "device": {
+      "type": "smart_tv",
+      "platform": "roku",
+      "screen_size": "55_inch"
+    }
+  },
+  {
+    "timestamp": "2024-01-16T12:30:18Z",
+    "user_id": "u_004",
+    "session_id": "sess_mno345",
+    "event_type": "movie_view",
+    "movie": {
+      "id": "m_5001",
+      "title": "Parasite",
+      "genre": ["Drama", "Thriller"],
+      "year": 2019,
+      "rating": 8.6,
+      "duration_minutes": 132
+    },
+    "user_interaction": {
+      "watch_duration_seconds": 7920,
+      "completion_percentage": 100,
+      "liked": true,
+      "rating_given": 10,
+      "rewatched": true,
+      "subtitles_used": true,
+      "language": "korean"
+    },
+    "device": {
+      "type": "tablet",
+      "platform": "android",
+      "screen_size": "10_inch"
+    }
+  }
+] 

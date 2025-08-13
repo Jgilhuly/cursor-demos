@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staging model for orders with basic data cleaning"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key to customers table"
+        tests:
+          - not_null
+      - name: order_date
+        description: "Original order date"
+      - name: status
+        description: "Original order status"
+      - name: order_date_cleaned
+        description: "Order date with null values replaced by current date"
+      - name: status_cleaned
+        description: "Order status standardized to uppercase and trimmed"
+      - name: loaded_at
+        description: "Timestamp when the record was loaded"
+
+  - name: orders_with_unix_date
+    description: "Orders table with order_date converted to unix timestamp format"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key to customers table"
+        tests:
+          - not_null
+      - name: order_date
+        description: "Original order date"
+      - name: order_date_unix
+        description: "Order date as unix timestamp (seconds since epoch)"
+        tests:
+          - not_null
+      - name: order_date_unix_ms
+        description: "Order date as unix timestamp in milliseconds"
+      - name: order_date_string
+        description: "Order date formatted as YYYY-MM-DD string"
+      - name: order_year
+        description: "Year extracted from order date"
+      - name: order_month
+        description: "Month extracted from order date"
+      - name: order_day
+        description: "Day extracted from order date"
+      - name: order_day_of_week
+        description: "Day of week (1=Sunday, 7=Saturday)"
+      - name: status
+        description: "Order status"
+      - name: transformed_at
+        description: "Timestamp when the transformation was applied" 
