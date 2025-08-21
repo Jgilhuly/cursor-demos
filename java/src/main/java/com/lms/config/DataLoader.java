@@ -98,6 +98,58 @@ public class DataLoader implements CommandLineRunner {
             "Create a basic calculator class with methods for addition, subtraction, multiplication, and division. Include proper error handling.", 
             javaCourse, LocalDateTime.now().plusDays(14), 100);
 
+        // Additional demo courses
+        Course webCourse = createCourse(
+            "Web Development Fundamentals",
+            "Learn HTML, CSS, and JavaScript essentials to build modern, responsive websites.",
+            "WEB201",
+            instructor
+        );
+
+        Course pythonCourse = createCourse(
+            "Python for Data Analysis",
+            "Use Python, pandas, and NumPy to analyze and visualize datasets.",
+            "PY101",
+            instructor
+        );
+
+        Course dbCourse = createCourse(
+            "Relational Databases and SQL",
+            "Master relational modeling and SQL queries for CRUD, joins, and aggregation.",
+            "DB301",
+            instructor
+        );
+
+        // Minimal modules for each additional course
+        createModule("Introduction", "Course overview and setup.", 1, webCourse);
+        createModule("Getting Started", "Environment setup and first notebook.", 1, pythonCourse);
+        createModule("SQL Basics", "Core SQL syntax and querying.", 1, dbCourse);
+
+        // Example assignments for each additional course
+        createAssignment(
+            "Build a Static Website",
+            "Create a simple multi-page website using semantic HTML and responsive CSS.",
+            webCourse,
+            LocalDateTime.now().plusDays(10),
+            50
+        );
+
+        createAssignment(
+            "Pandas Data Cleaning",
+            "Load a CSV dataset and perform cleaning, filtering, and summary statistics.",
+            pythonCourse,
+            LocalDateTime.now().plusDays(12),
+            50
+        );
+
+        createAssignment(
+            "Design a Database Schema",
+            "Model entities and relationships, then implement tables and constraints.",
+            dbCourse,
+            LocalDateTime.now().plusDays(14),
+            75
+        );
+
         System.out.println("✅ Sample data loaded successfully!");
         System.out.println("👤 Users created: " + userRepository.count());
         System.out.println("📚 Courses created: " + courseRepository.count());
