@@ -18,6 +18,10 @@ export function getCourses(): Promise<Course[]> {
   return http<Course[]>('/courses');
 }
 
+export function getCourse(id: number): Promise<Course> {
+  return http<Course>(`/courses/${id}`);
+}
+
 export function searchCourses(query: string): Promise<Course[]> {
   const q = encodeURIComponent(query);
   return http<Course[]>(`/courses/search?q=${q}`);

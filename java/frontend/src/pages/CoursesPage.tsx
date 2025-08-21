@@ -1,11 +1,35 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getCourses, searchCourses } from '../lib/api'
 import type { Course } from '../lib/types'
 
 function CourseCard({ course }: { course: Course }) {
+  const navigate = useNavigate()
+
+  const handleCardClick = () => {
+    navigate(`/courses/${course.id}`)
+  }
+
   return (
-    <div style={{ border: '1px solid #e5e7eb', borderRadius: 8, padding: 16 }}>
+    <div 
+      style={{ 
+        border: '1px solid #e5e7eb', 
+        borderRadius: 8, 
+        padding: 16,
+        cursor: 'pointer',
+        transition: 'all 0.2s ease',
+      }}
+      onClick={handleCardClick}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = '#3b82f6'
+        e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = '#e5e7eb'
+        e.currentTarget.style.boxShadow = 'none'
+      }}
+    >
       <h3 style={{ margin: '0 0 8px 0' }}>{course.title}</h3>
       {course.code && (
         <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 8 }}>Code: {course.code}</div>
