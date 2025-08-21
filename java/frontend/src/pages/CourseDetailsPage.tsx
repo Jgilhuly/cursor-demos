@@ -20,19 +20,9 @@ export default function CourseDetailsPage() {
 
   if (courseId <= 0) {
     return (
-      <div style={{ padding: 24, maxWidth: 800, margin: '0 auto' }}>
-        <div>Invalid course ID</div>
-        <button
-          onClick={handleBackClick}
-          style={{
-            marginTop: 16,
-            padding: '8px 16px',
-            border: '1px solid #d1d5db',
-            background: '#f9fafb',
-            borderRadius: 6,
-            cursor: 'pointer',
-          }}
-        >
+      <div className="container-narrow">
+        <div className="error">Invalid course ID</div>
+        <button onClick={handleBackClick} className="btn btn-secondary mt-4">
           Back to Courses
         </button>
       </div>
@@ -41,29 +31,19 @@ export default function CourseDetailsPage() {
 
   if (isLoading) {
     return (
-      <div style={{ padding: 24, maxWidth: 800, margin: '0 auto' }}>
-        <div>Loading course details...</div>
+      <div className="container-narrow">
+        <div className="loading">Loading course details...</div>
       </div>
     )
   }
 
   if (isError || !course) {
     return (
-      <div style={{ padding: 24, maxWidth: 800, margin: '0 auto' }}>
-        <div>
+      <div className="container-narrow">
+        <div className="error">
           Failed to load course details{error instanceof Error ? `: ${error.message}` : ''}
         </div>
-        <button
-          onClick={handleBackClick}
-          style={{
-            marginTop: 16,
-            padding: '8px 16px',
-            border: '1px solid #d1d5db',
-            background: '#f9fafb',
-            borderRadius: 6,
-            cursor: 'pointer',
-          }}
-        >
+        <button onClick={handleBackClick} className="btn btn-secondary mt-4">
           Back to Courses
         </button>
       </div>
@@ -85,126 +65,68 @@ export default function CourseDetailsPage() {
   }
 
   return (
-    <div style={{ padding: 24, maxWidth: 800, margin: '0 auto' }}>
-      <button
-        onClick={handleBackClick}
-        style={{
-          marginBottom: 24,
-          padding: '8px 16px',
-          border: '1px solid #d1d5db',
-          background: '#f9fafb',
-          borderRadius: 6,
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-        }}
-      >
-        ← Back to Courses
+    <div className="container-narrow">
+      <button onClick={handleBackClick} className="btn btn-secondary back-button">
+        Back to Courses
       </button>
 
-      <div style={{ border: '1px solid #e5e7eb', borderRadius: 8, padding: 24 }}>
-        <h1 style={{ margin: '0 0 16px 0', color: '#111827' }}>{course.title}</h1>
+      <div className="card course-details">
+        <h1 className="course-title">{course.title}</h1>
         
         {course.code && (
-          <div style={{ 
-            fontSize: 14, 
-            color: '#6b7280', 
-            marginBottom: 16,
-            padding: '4px 8px',
-            background: '#f3f4f6',
-            borderRadius: 4,
-            display: 'inline-block'
-          }}>
+          <div className="badge badge-secondary mb-4">
             Course Code: {course.code}
           </div>
         )}
 
         {course.description && (
-          <p style={{ 
-            margin: '0 0 24px 0', 
-            color: '#374151',
-            lineHeight: 1.6,
-            fontSize: 16
-          }}>
+          <p className="text-lg mb-6">
             {course.description}
           </p>
         )}
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-          gap: 16,
-          marginBottom: 24
-        }}>
-          <div>
-            <h4 style={{ margin: '0 0 8px 0', color: '#374151', fontSize: 14 }}>Status</h4>
-            <div style={{ 
-              padding: '4px 8px', 
-              background: course.active ? '#dcfce7' : '#fef2f2',
-              color: course.active ? '#166534' : '#dc2626',
-              borderRadius: 4,
-              fontSize: 14,
-              fontWeight: 500
-            }}>
+        <div className="course-meta">
+          <div className="course-meta-item">
+            <h4>Status</h4>
+            <div className={`badge ${course.active ? 'badge-success' : 'badge-destructive'}`}>
               {course.active ? 'Active' : 'Inactive'}
             </div>
           </div>
 
-          <div>
-            <h4 style={{ margin: '0 0 8px 0', color: '#374151', fontSize: 14 }}>Publication</h4>
-            <div style={{ 
-              padding: '4px 8px', 
-              background: course.published ? '#dbeafe' : '#fef3c7',
-              color: course.published ? '#1e40af' : '#92400e',
-              borderRadius: 4,
-              fontSize: 14,
-              fontWeight: 500
-            }}>
+          <div className="course-meta-item">
+            <h4>Publication</h4>
+            <div className={`badge ${course.published ? 'badge-primary' : 'badge-warning'}`}>
               {course.published ? 'Published' : 'Draft'}
             </div>
           </div>
 
-          <div>
-            <h4 style={{ margin: '0 0 8px 0', color: '#374151', fontSize: 14 }}>Enrollment</h4>
-            <div style={{ 
-              padding: '4px 8px', 
-              background: '#f3f4f6',
-              color: '#374151',
-              borderRadius: 4,
-              fontSize: 14,
-              fontWeight: 500
-            }}>
+          <div className="course-meta-item">
+            <h4>Enrollment</h4>
+            <div className="badge badge-secondary">
               {getEnrollmentStatus(course)}
             </div>
           </div>
         </div>
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-          gap: 16,
-          borderTop: '1px solid #e5e7eb',
-          paddingTop: 24
-        }}>
-          <div>
-            <h4 style={{ margin: '0 0 8px 0', color: '#374151', fontSize: 14 }}>Start Date</h4>
-            <div style={{ color: '#6b7280', fontSize: 14 }}>
+        <div className="grid grid-cols-responsive course-dates">
+          <div className="course-meta-item">
+            <h4>Start Date</h4>
+            <div className="text-sm text-muted">
               {formatDate(course.startDate)}
             </div>
           </div>
 
-          <div>
-            <h4 style={{ margin: '0 0 8px 0', color: '#374151', fontSize: 14 }}>End Date</h4>
-            <div style={{ color: '#6b7280', fontSize: 14 }}>
+          <div className="course-meta-item">
+            <h4>End Date</h4>
+            <div className="text-sm text-muted">
               {formatDate(course.endDate)}
             </div>
           </div>
 
           {course.maxEnrollments && (
-            <div>
-              <h4 style={{ margin: '0 0 8px 0', color: '#374151', fontSize: 14 }}>Max Enrollments</h4>
-              <div style={{ color: '#6b7280', fontSize: 14 }}>
+            <div className="course-meta-item">
+              <h4>Max Enrollments</h4>
+              <div className="text-sm text-muted">
                 {course.maxEnrollments}
               </div>
             </div>
