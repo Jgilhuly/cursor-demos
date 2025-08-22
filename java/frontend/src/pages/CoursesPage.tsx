@@ -12,13 +12,13 @@ function CourseCard({ course }: { course: Course }) {
   }
 
   return (
-    <div className="card card-interactive course-card" onClick={handleCardClick}>
-      <h3>{course.title}</h3>
+    <div className="glass-card clickable" onClick={handleCardClick}>
+      <h3 className="course-card-title">{course.title}</h3>
       {course.code && (
-        <div className="course-code">Code: {course.code}</div>
+        <div className="course-card-code">Code: {course.code}</div>
       )}
       {course.description && (
-        <p className="course-description">
+        <p className="course-card-description">
           {course.description.length > 160
             ? course.description.slice(0, 157) + '...'
             : course.description}
@@ -48,19 +48,28 @@ export default function CoursesPage() {
   }
 
   const body = useMemo(() => {
-    if (isLoading) return <div className="loading">Loading courses…</div>
+    if (isLoading) return <div className="loading-state">Loading courses…</div>
     if (isError)
       return (
-        <div className="error">
-          Failed to load courses{error instanceof Error ? `: ${error.message}` : ''}
+        <div className="error-state">
+          <p>Failed to load courses{error instanceof Error ? `: ${error.message}` : ''}</p>
         </div>
       )
     const list = courses ?? []
     if (list.length === 0) {
-      return <div className="text-center text-muted">No courses found.</div>
+      return (
+        <div className="glass-card text-center">
+          <h3 style={{ color: 'rgba(255, 255, 255, 0.8)', fontWeight: 400 }}>
+            No courses found
+          </h3>
+          <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginTop: '0.5rem' }}>
+            {query ? 'Try adjusting your search terms' : 'No courses are available at the moment'}
+          </p>
+        </div>
+      )
     }
     return (
-      <div className="courses-grid">
+      <div className="course-grid">
         {list.map((c) => (
           <CourseCard key={c.id} course={c} />
         ))}
@@ -69,15 +78,23 @@ export default function CoursesPage() {
   }, [isLoading, isError, error, courses])
 
   return (
-    <div className="container">
-      <h2 className="mt-0">Courses</h2>
-      <form onSubmit={onSubmit} className="search-form">
+    <div className="page-container">
+      <div className="text-center mb-4">
+        <h1 style={{ marginBottom: '0.5rem', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+          📚 Learning Management System
+        </h1>
+        <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.125rem' }}>
+          Discover and explore available courses
+        </p>
+      </div>
+      
+      <form onSubmit={onSubmit} className="search-container">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search courses"
+          placeholder="Search courses by title, code, or description..."
           aria-label="Search courses"
-          className="input search-input"
+          className="form-input"
         />
         <button
           type="submit"
@@ -87,6 +104,7 @@ export default function CoursesPage() {
           {isFetching ? 'Searching…' : 'Search'}
         </button>
       </form>
+      
       {body}
     </div>
   )

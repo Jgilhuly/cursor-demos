@@ -20,32 +20,40 @@ export default function CourseDetailsPage() {
 
   if (courseId <= 0) {
     return (
-      <div className="container-narrow">
-        <div className="error">Invalid course ID</div>
-        <button onClick={handleBackClick} className="btn btn-secondary mt-4">
-          Back to Courses
-        </button>
+      <div className="page-container-narrow">
+        <div className="error-state">
+          <h2>Invalid Course ID</h2>
+          <p>The course ID provided is not valid.</p>
+          <button onClick={handleBackClick} className="btn btn-secondary mt-4">
+            ← Back to Courses
+          </button>
+        </div>
       </div>
     )
   }
 
   if (isLoading) {
     return (
-      <div className="container-narrow">
-        <div className="loading">Loading course details...</div>
+      <div className="page-container-narrow">
+        <div className="loading-state">
+          <h3>Loading course details...</h3>
+        </div>
       </div>
     )
   }
 
   if (isError || !course) {
     return (
-      <div className="container-narrow">
-        <div className="error">
-          Failed to load course details{error instanceof Error ? `: ${error.message}` : ''}
+      <div className="page-container-narrow">
+        <div className="error-state">
+          <h2>Failed to Load Course</h2>
+          <p>
+            {error instanceof Error ? error.message : 'An unexpected error occurred while loading the course details.'}
+          </p>
+          <button onClick={handleBackClick} className="btn btn-secondary mt-4">
+            ← Back to Courses
+          </button>
         </div>
-        <button onClick={handleBackClick} className="btn btn-secondary mt-4">
-          Back to Courses
-        </button>
       </div>
     )
   }
@@ -65,68 +73,68 @@ export default function CourseDetailsPage() {
   }
 
   return (
-    <div className="container-narrow">
-      <button onClick={handleBackClick} className="btn btn-secondary back-button">
-        Back to Courses
+    <div className="page-container-narrow">
+      <button onClick={handleBackClick} className="btn btn-ghost mb-4">
+        ← Back to Courses
       </button>
 
-      <div className="card course-details">
-        <h1 className="course-title">{course.title}</h1>
+      <div className="main-content-card">
+        <h1 className="course-detail-title">{course.title}</h1>
         
         {course.code && (
-          <div className="badge badge-secondary mb-4">
+          <div className="course-detail-code">
             Course Code: {course.code}
           </div>
         )}
 
         {course.description && (
-          <p className="text-lg mb-6">
+          <p className="course-detail-description">
             {course.description}
           </p>
         )}
 
-        <div className="course-meta">
-          <div className="course-meta-item">
-            <h4>Status</h4>
-            <div className={`badge ${course.active ? 'badge-success' : 'badge-destructive'}`}>
+        <div className="info-grid">
+          <div className="info-item">
+            <div className="info-item-label">Status</div>
+            <div className={`status-badge ${course.active ? 'active' : 'inactive'}`}>
               {course.active ? 'Active' : 'Inactive'}
             </div>
           </div>
 
-          <div className="course-meta-item">
-            <h4>Publication</h4>
-            <div className={`badge ${course.published ? 'badge-primary' : 'badge-warning'}`}>
+          <div className="info-item">
+            <div className="info-item-label">Publication</div>
+            <div className={`status-badge ${course.published ? 'published' : 'draft'}`}>
               {course.published ? 'Published' : 'Draft'}
             </div>
           </div>
 
-          <div className="course-meta-item">
-            <h4>Enrollment</h4>
-            <div className="badge badge-secondary">
+          <div className="info-item">
+            <div className="info-item-label">Enrollment</div>
+            <div className="status-badge enrollment">
               {getEnrollmentStatus(course)}
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-responsive course-dates">
-          <div className="course-meta-item">
-            <h4>Start Date</h4>
-            <div className="text-sm text-muted">
+        <div className="info-grid section-divider">
+          <div className="info-item">
+            <div className="info-item-label">Start Date</div>
+            <div className="info-item-value">
               {formatDate(course.startDate)}
             </div>
           </div>
 
-          <div className="course-meta-item">
-            <h4>End Date</h4>
-            <div className="text-sm text-muted">
+          <div className="info-item">
+            <div className="info-item-label">End Date</div>
+            <div className="info-item-value">
               {formatDate(course.endDate)}
             </div>
           </div>
 
           {course.maxEnrollments && (
-            <div className="course-meta-item">
-              <h4>Max Enrollments</h4>
-              <div className="text-sm text-muted">
+            <div className="info-item">
+              <div className="info-item-label">Max Enrollments</div>
+              <div className="info-item-value">
                 {course.maxEnrollments}
               </div>
             </div>
